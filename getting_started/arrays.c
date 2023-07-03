@@ -14,5 +14,5 @@ int main() {
         printf("%d ", availableKitNumbers[i]);
     }
 
-    return 1;
+    return 0;
 }
