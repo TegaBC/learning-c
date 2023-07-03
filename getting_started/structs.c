@@ -17,6 +17,5 @@ int main() {
     danielSturridge.startingYear = 2015;
     strcpy(danielSturridge.name, "Daniel S."); // to modify strings I have to use str copy, if in the struct I don't allocate memory to the string I get a warning when assigning now.
 
-
     return 0;
 }
