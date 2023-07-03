@@ -10,10 +10,10 @@ typedef struct
 
 int triangleIsValid(Triangle triangle) 
 {
-    if (triangle.angle0 + triangle.angle1 + triangle.angle2) 
+    if ((triangle.angle0 + triangle.angle1 + triangle.angle2) == 180) 
     {
         printf("Triangle is a valid triangle.");
-        return 1;
+        return 1; // simply, triangle angles must be 180
     } 
     else 
     {
