@@ -10,23 +10,28 @@ typedef struct
 // Print to console the players, with colours n border
 void viewPlayers() {
     // Set max buffer size, buffer and file pointer 
-    const int max = 64;
-    FILE *file;
+    const int max = 128;
+    FILE *pFile;
     char buffer[max];
 
     // Open file in read mode, set to the pointer
-    file = fopen("save.txt", "r");
+    pFile = fopen("save.txt", "r");
 
     // reads the file, stores it in the buffer. Returns pointer
-    fgets(buffer, max, file);
+    fgets(buffer, max, pFile);
 
-    // Prints out the text
-    printf(buffer);
+    // Allocate an array to store 32 max players (64 max chars for each player info)
+    char players[32][64];
 
-   
-    // read lines of the file
-    // parse each line for the right info
-    // print it to console looking nice
+    // Extract first player 
+    char *pToken = strtok(buffer, ";");
+
+    while(pToken != NULL) { // Whilst we have strings to split, print the previous token (result of splitting the string)
+        printf("%s\n", pToken);
+        pToken = strtok(NULL, ";");
+
+        //TODO: Format the print so its easy for end users to see
+    }
 }
 
 void editPlayer() {
