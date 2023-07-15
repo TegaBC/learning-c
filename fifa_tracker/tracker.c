@@ -20,17 +20,14 @@ void viewPlayers() {
     // reads the file, stores it in the buffer. Returns pointer
     fgets(buffer, max, pFile);
 
-    // Allocate an array to store 32 max players (64 max chars for each player info)
-    char players[32][64];
-
     // Extract first player 
-    char *pToken = strtok(buffer, ";");
+    char *pPlayerToken = strtok(buffer, ";");
 
-    while(pToken != NULL) { // Whilst we have strings to split, print the previous token (result of splitting the string)
-        printf("%s\n", pToken);
-        pToken = strtok(NULL, ";");
+    while(pPlayerToken != NULL) { // Whilst we have strings to split, print the previous token (result of splitting the string)
+        printf("%s\n", pPlayerToken);
+        pPlayerToken = strtok(NULL, ";");
 
-        //TODO: Format the print so its easy for end users to see
+        //TODO: Print out players stats nicely
     }
 }
 
