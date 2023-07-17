@@ -20,14 +20,18 @@ void viewPlayers() {
     // reads the file, stores it in the buffer. Returns pointer
     fgets(buffer, max, pFile);
 
+    // place to store players parsed from the file, set counter (index) for players
+    char players[32][64];
+    int playerCount = 0;
+
     // Extract first player 
     char *pPlayerToken = strtok(buffer, ";");
 
     while(pPlayerToken != NULL) { // Whilst we have strings to split, print the previous token (result of splitting the string)
-        printf("%s\n", pPlayerToken);
-        pPlayerToken = strtok(NULL, ";");
+        strcpy(players[playerCount], pPlayerToken); // Stores player information inside the players array
+        pPlayerToken = strtok(NULL, ";"); // Parses the remaining string
 
-        //TODO: Print out players stats nicely
+        playerCount++; // Increment player count for next value
     }
 }
 
