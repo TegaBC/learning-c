@@ -32,14 +32,28 @@ void viewPlayers() {
     {   
         // Store players in array, parse next string for next iteration of storage
         strcpy(players[playerCount], pPlayerToken); 
-        pPlayerToken = strtok(NULL, ";"); 
+        pPlayerToken = strtok(NULL, ";"); // Note: Putting NULL instead of the string tells c to keep tokening first string passed
 
         // Increment player count for next value
         playerCount++; 
     }
 
-    for(int i = 0; i < playerCount; i ++) {
-       
+    for(int i = 0; i < playerCount; i++) {
+        char player[64];
+        strcpy(player, players[i]);
+
+        // Tokenize stats
+        char *pPlayerStat = strtok(player, "_");
+
+        // Split player stats up
+        while(pPlayerStat != NULL) 
+        {   
+            // Store players in array, parse next string for next iteration of storage
+            printf("%s\n", pPlayerStat);
+            pPlayerStat = strtok(NULL, "_"); 
+
+            // TODO: store stats in variables and print nicely to console
+        }
     }
 }
 
