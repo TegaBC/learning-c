@@ -27,11 +27,19 @@ void viewPlayers() {
     // Extract first player 
     char *pPlayerToken = strtok(buffer, ";");
 
-    while(pPlayerToken != NULL) { // Whilst we have strings to split, print the previous token (result of splitting the string)
-        strcpy(players[playerCount], pPlayerToken); // Stores player information inside the players array
-        pPlayerToken = strtok(NULL, ";"); // Parses the remaining string
+    // Whilst we have strings to split, print the previous token (result of splitting the string)
+    while(pPlayerToken != NULL) 
+    {   
+        // Store players in array, parse next string for next iteration of storage
+        strcpy(players[playerCount], pPlayerToken); 
+        pPlayerToken = strtok(NULL, ";"); 
 
-        playerCount++; // Increment player count for next value
+        // Increment player count for next value
+        playerCount++; 
+    }
+
+    for(int i = 0; i < playerCount; i ++) {
+       
     }
 }
 
