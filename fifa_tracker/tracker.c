@@ -38,14 +38,19 @@ void viewPlayers() {
         playerCount++; 
     }
 
+    // Loops through players and prints stats to console
     for(int i = 0; i < playerCount; i++) {
         char player[64];
         strcpy(player, players[i]);
 
+        // Split player stats up
+        char firstName[16];
+        char lastName[16];
+        char overall[2]; 
+
         // Tokenize stats
         char *pPlayerStat = strtok(player, "_");
 
-        // Split player stats up
         while(pPlayerStat != NULL) 
         {   
             // Store players in array, parse next string for next iteration of storage
