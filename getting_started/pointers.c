@@ -16,8 +16,12 @@ int main()
     printf("Address of age (address of variable stored location): %p\n", &age);
     printf("Value of pAge (address of variable its pointing to): %p\n", pAge);
     
-    printf("Value at stored address (using the pointer which points to the original\n variable address and getting the value at that address): %d\n", *pAge);
+    printf("Value at stored address (using the pointer which points to the original\nvariable address and getting the value at that address): %d\n", *pAge);
 
-    //printf("Value of age: %d\n", age);
+    //////
+
+    int *year = 2023;
+    printf("\nThe current year is: %p\n", &year);
+
     return 0;
 }
