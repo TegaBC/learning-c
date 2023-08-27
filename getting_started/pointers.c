@@ -20,6 +20,8 @@ int main()
 
     //////
 
+
+    // https://stackoverflow.com/questions/33404478/initialization-makes-pointer-from-integer-without-a-cast-c
     int *year = 2023;
     printf("\nThe current year is: %p\n", &year);
 
