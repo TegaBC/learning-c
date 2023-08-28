@@ -2,23 +2,11 @@
 #include <time.h>
 #include <string.h>
 
-int main() {
-    
+void rollDice() {
+
+    // Seed the random number generator with time
     time_t t;
     srand((unsigned) time(&t));
-
-    char command[1];
-    
-    printf("Enter (Y) to roll a dice: ");
-    
-    fgets(command, 3, stdin);
-    command[strcspn(command, "\n")] = 0; // get rid of new line character so I can compare strings correctly
-
-    if (!(strcmp(command, "Y") == 0)) 
-    {
-        printf("Closing application...");
-        return 0;
-    }
 
     // Get a random number between 1 and 6
     int number = rand() % 7; 
@@ -31,25 +19,59 @@ int main() {
     switch (number)
     {
     case 1:
-        printf("⚀");
+        printf("⚀\n");
         break;
     case 2:
-        printf("⚁");
+        printf("⚁\n");
         break;
     case 3:
-        printf("⚂");
+        printf("⚂\n");
         break;
     case 4:
-        printf("⚃");
+        printf("⚃\n");
         break;
     case 5:
-        printf("⚄");
+        printf("⚄\n");
         break;
     case 6:
-        printf("⚅");
+        printf("⚅\n");
         break;
     default:
         break;
+    }
+}
+
+int main() {
+    int maxCommandCharacters = 2;
+    
+    while (1)
+    {
+        printf("Enter (Y) to roll a dice or (N) to close application:\n");
+        
+        // Read user input
+        char command[maxCommandCharacters];
+        fgets(command, maxCommandCharacters, stdin);
+
+        // Remove newline character
+        command[strcspn(command, "\n")] = 0; 
+
+        // Clear the input buffer (any left over characters can interfere with the way fgets and stdin works)
+        int c;
+        while ((c = getchar()) != '\n' && c != EOF); // In c you can set a variables value within a condition whilst evaluating it (because "=" operator returns value being assigned)
+
+        if ((strcmp(command, "N") == 0)) 
+        {
+            printf("Closing application...\n");
+            break; // Exit the loop
+        }
+        else if ((strcmp(command, "Y") == 0))
+        {
+            rollDice();
+        }
+        else
+        {
+            printf("Command %s not recognised\n", command);
+        }
     }
 
     return 0;
