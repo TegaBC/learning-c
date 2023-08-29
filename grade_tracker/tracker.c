@@ -5,9 +5,12 @@ typedef struct
 {
     char name[16];
     char class[16];
-    char grade[1];
-    int age;
+    char grade[16];
+    char age[16];
 } student;
+
+const char divider[] = "<<------------------------------>>";
+const char smallDivider[] = "<-------------------->";
 
 student AllStudents[64];
 int totalStudents = 0;
@@ -22,7 +25,7 @@ void startStudentCreation() {
     char age[sizeOfString]; // age is char not int just to make it easier
 
     // Prompt user and collect student information
-    printf("-------------------\nEnter students first name:\n");
+    printf("%s\nEnter students first name:\n", divider);
     fgets(name, sizeOfString, stdin);
 
     printf("Enter students class name:\n");
@@ -38,13 +41,33 @@ void startStudentCreation() {
     student newStudent;
 
     // Set values of student
-    newStudent.age = (int)age;
+    strcpy(newStudent.age, age);
     strcpy(newStudent.name, name);
     strcpy(newStudent.class, class);
     strcpy(newStudent.grade, grade);
 
     totalStudents++;
     AllStudents[totalStudents-1] = newStudent;
+}
+
+void viewStudents() {
+    if (totalStudents <= 0) {
+        printf("No students to view.\n");
+        return;
+    }
+
+    printf("%s\n", divider);
+
+    // Loop through student array and print nicely to console
+    for (int n = 0; n <= totalStudents-1; n++) 
+    {
+        // Get the student we are currently on
+        student currentStudent = AllStudents[n];
+        
+        // Display info to user
+        printf("%d.\nStudent Name: %sClass: %sGrade: %sAge: %s%s\n", 
+        n+1, currentStudent.name, currentStudent.class, currentStudent.grade, currentStudent.age, smallDivider);
+    }
 }
 
 int main() {
@@ -66,7 +89,7 @@ int main() {
 
         if (strcmp(command, "1") == 0) 
         {
-            // View students
+            viewStudents();
         } 
         else if (strcmp(command, "2") == 0) 
         {
