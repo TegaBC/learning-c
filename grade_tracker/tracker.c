@@ -9,10 +9,8 @@ typedef struct
     int age;
 } student;
 
-void clearInputBuffer() {
-    int c;
-    while ((c = getchar()) != '\n' && c != EOF);
-}
+student AllStudents[64];
+int totalStudents = 0;
 
 void startStudentCreation() {
     // Allocate space for student info
@@ -33,22 +31,23 @@ void startStudentCreation() {
     printf("Enter students current class grade:\n");
     fgets(grade, sizeOfString, stdin);
 
-    //clearInputBuffer();
     printf("Enter students age:\n");
     fgets(age, sizeOfString, stdin);
 
     // Create a struct here
     student newStudent;
+
+    // Set values of student
     newStudent.age = (int)age;
     strcpy(newStudent.name, name);
     strcpy(newStudent.class, class);
     strcpy(newStudent.grade, grade);
 
-    
+    totalStudents++;
+    AllStudents[totalStudents-1] = newStudent;
 }
 
 int main() {
-    student AllStudents[64];
 
     while (1) 
     {
