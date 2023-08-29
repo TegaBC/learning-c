@@ -1,21 +1,54 @@
 #include <stdio.h>
 #include <string.h>
 
-typedef struct student
+typedef struct
 {
     char name[16];
     char class[16];
     char grade[1];
     int age;
-};
+} student;
 
 void clearInputBuffer() {
     int c;
     while ((c = getchar()) != '\n' && c != EOF);
 }
 
+void startStudentCreation() {
+    // Allocate space for student info
+    int sizeOfString = 16;
+
+    char name[sizeOfString];
+    char class[sizeOfString];
+    char grade[sizeOfString];
+    char age[sizeOfString]; // age is char not int just to make it easier
+
+    // Prompt user and collect student information
+    printf("-------------------\nEnter students first name:\n");
+    fgets(name, sizeOfString, stdin);
+
+    printf("Enter students class name:\n");
+    fgets(class, sizeOfString, stdin);
+
+    printf("Enter students current class grade:\n");
+    fgets(grade, sizeOfString, stdin);
+
+    //clearInputBuffer();
+    printf("Enter students age:\n");
+    fgets(age, sizeOfString, stdin);
+
+    // Create a struct here
+    student newStudent;
+    newStudent.age = (int)age;
+    strcpy(newStudent.name, name);
+    strcpy(newStudent.class, class);
+    strcpy(newStudent.grade, grade);
+
+    
+}
+
 int main() {
-    struct student AllStudents[64];
+    student AllStudents[64];
 
     while (1) 
     {
@@ -30,20 +63,19 @@ int main() {
         // Remove newline character
         command[strcspn(command, "\n")] = 0; 
 
-        // Clear the input buffer
-        clearInputBuffer();
+        // Clear the input buffer? TODO
 
         if (strcmp(command, "1") == 0) 
         {
             // View students
         } 
-        else if (strcmp(command, "2")) 
+        else if (strcmp(command, "2") == 0) 
         {
             // Bring up menu to choose student to edit
         }
-        else if (strcmp(command, "3")) 
+        else if (strcmp(command, "3") == 0) 
         {
-            // Ask questions to add a student
+            startStudentCreation();
         }
     }
 
