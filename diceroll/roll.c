@@ -2,6 +2,10 @@
 #include <time.h>
 #include <string.h>
 
+#define ANSI_COLOR_BLUE "\x1b[34m" // Works directly with string literals because performs direct textual substitution
+#define ANSI_COLOR_CYAN "\x1b[36m"
+#define ANSI_COLOR_RESET "\x1b[0m"
+
 void rollDice() {
 
     // Seed the random number generator with time
@@ -14,7 +18,7 @@ void rollDice() {
     // How this works:
     // Get a random number and do a modulus calculation since it cant be a bigger remainder than the number given which sets the bound for random number
     
-    printf("You got number: %d\nSymbol: ", number);
+    printf("%sYou got number: %d %s\nSymbol: ", ANSI_COLOR_CYAN, number, ANSI_COLOR_RESET); // Using colours in a different way, this way can be used with normal strings too instead of #define
 
     switch (number)
     {
@@ -43,10 +47,10 @@ void rollDice() {
 
 int main() {
     int maxCommandCharacters = 2;
-    
+
     while (1)
     {
-        printf("Enter (Y) to roll a dice or (N) to close application:\n");
+        printf(ANSI_COLOR_BLUE "Enter (Y) to roll a dice or (N) to close application:\n" ANSI_COLOR_RESET);
         
         // Read user input
         char command[maxCommandCharacters];
