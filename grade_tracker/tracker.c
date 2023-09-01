@@ -56,7 +56,7 @@ void viewStudents() {
         return;
     }
 
-    printf("%s\n", divider);
+    printf("\033[34mSTUDENT LIST\033[0m\n%s\n", divider);
 
     // Loop through student array and print nicely to console
     for (int n = 0; n <= totalStudents-1; n++) 
@@ -66,6 +66,24 @@ void viewStudents() {
         
         // Display info to user
         printf("%d.\nStudent Name: %sClass: %sGrade: %sAge: %s%s\n", 
+        n+1, currentStudent.name, currentStudent.class, currentStudent.grade, currentStudent.age, smallDivider);
+    }
+}
+
+// List out numbered students, ask which one to edit, then ask everything to be redone about the person and slot it in where it used to be in the array
+void editStudent() {
+    // Loop through student array and print nicely to console
+    
+    // Give instructions to user
+    printf("\033[34mPICK A STUDENTS NUMBER TO EDIT\033[0m\n%s\n", divider);
+    
+    for (int n = 0; n <= totalStudents-1; n++) 
+    {
+        // Get the student we are currently on
+        student currentStudent = AllStudents[n];
+        
+        // Print out students information and a divider for ease on the eyes. 
+        printf("[%d]\nStudent Name: %sClass: %sGrade: %sAge: %s%s\n", 
         n+1, currentStudent.name, currentStudent.class, currentStudent.grade, currentStudent.age, smallDivider);
     }
 }
@@ -93,7 +111,7 @@ int main() {
         } 
         else if (strcmp(command, "2") == 0) 
         {
-            // Bring up menu to choose student to edit
+            editStudent();
         }
         else if (strcmp(command, "3") == 0) 
         {
