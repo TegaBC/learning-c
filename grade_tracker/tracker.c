@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 typedef struct
@@ -86,6 +87,16 @@ void editStudent() {
         printf("[%d]\nStudent Name: %sClass: %sGrade: %sAge: %s%s\n", 
         n+1, currentStudent.name, currentStudent.class, currentStudent.grade, currentStudent.age, smallDivider);
     }
+
+    int maxStudentNumber = 8;
+    char studentNumber[maxStudentNumber];
+    
+    fgets(studentNumber, maxStudentNumber, stdin);
+
+    // Remove newline character
+    studentNumber[strcspn(studentNumber, "\n")] = 0; 
+
+    // TODO: Check if I picked a valid number in the range of what I can pick then offer to edit settings to user
 }
 
 int main() {
